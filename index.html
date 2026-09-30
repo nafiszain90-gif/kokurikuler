@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOKURIKULER SMKN 2 Klaten</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://nafiszain90-gif.github.io/asas/batiksmk.png');
+            background-repeat: repeat;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 90%;
+            width: 100%;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        /* Bingkai untuk menampilkan Form */
+        .bingkai-form {
+            width: 100%;
+            height: 700px;
+            border: 0;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+        .no-form {
+            color: #e74c3c;
+            font-style: italic;
+            padding: 40px 0;
+            font-weight: bold;
+        }
+        .info-waktu {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+    </style>
+    <script>
+        // 1. Menonaktifkan Klik Kanan
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 2. Menonaktifkan Tombol F12 dan Kombinasi Keyboard Tertentu
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>PRESENSI UPACARA DAN KOKURIKULER SMKN 2 KLATEN</h2>
+    
+    <!-- Tempat di mana iframe/bingkai form akan muncul secara dinamis -->
+    <div id="container-link">
+        <p class="no-form">Memeriksa jadwal formulir...</p>
+    </div>
+
+    <div class="info-waktu" id="live-clock">
+        Waktu sekarang: --:--:--
+    </div>
+</div>
+
+<script>
+    // URL Google Form yang akan ditampilkan
+    const urlForm = 'https://docs.google.com/forms/d/e/1FAIpQLScolIuA2YV_8bXG1JST1o01l1VD8BxilARQILcI09B8p39s2A/viewform';
+
+    function cekDanTampilkanForm() {
+        const sekarang = new Date();
+        
+        const hari = sekarang.getDay(); // 0 = Minggu, 1 = Senin, ..., 5 = Jumat, 6 = Sabtu
+        const jam = sekarang.getHours(); // 0 - 23
+        
+        const tahun = sekarang.getFullYear();
+        const bulan = String(sekarang.getMonth() + 1).padStart(2, '0');
+        const tanggal = String(sekarang.getDate()).padStart(2, '0');
+        const tanggalSekarangStr = `${tahun}-${bulan}-${tanggal}`;
+        
+        const jamStr = String(sekarang.getHours()).padStart(2, '0');
+        const menitStr = String(sekarang.getMinutes()).padStart(2, '0');
+        const detikStr = String(sekarang.getSeconds()).padStart(2, '0');
+
+        // Tampilkan jam live di layar
+        document.getElementById('live-clock').innerText = `Waktu sekarang: ${tanggalSekarangStr} Pukul ${jamStr}:${menitStr}:${detikStr}`;
+
+        const containerLink = document.getElementById('container-link');
+        
+        // Syarat: Hari Senin (1) sampai Jumat (5) DAN Jam 15:00 s.d 20:00 (hour >= 15 && hour < 20)
+        // Catatan: hour < 20 berarti form akan menutup tepat pada pukul 20:00:00
+        const isWeekday = (hari >= 1 && hari <= 5);
+        const isTimeAllowed = (jam >= 15 && jam < 20);
+
+        if (isWeekday && isTimeAllowed) {
+            // Memeriksa apakah iframe sudah ada agar tidak mereload halaman setiap detik
+            const iframeAda = document.getElementById('iframe-form');
+            if (!iframeAda) {
+                containerLink.innerHTML = `
+                    <iframe id="iframe-form" src="${urlForm}" class="bingkai-form" frameborder="0" marginheight="0" marginwidth="0">
+                        Memuat...
+                    </iframe>`;
+            }
+        } else {
+            containerLink.innerHTML = `
+                <p class="no-form">Maaf, ujian saat ini sedang ditutup.<br>
+                Form hanya dapat diakses pada <strong>Hari Senin s.d. Jumat pukul 15:00 - 20:00 WIB</strong>.</p>`;
+        }
+    }
+
+    // Jalankan pengecekan real-time setiap detik
+    cekDanTampilkanForm();
+    setInterval(cekDanTampilkanForm, 1000);
+</script>
+
+</body>
+</html>
