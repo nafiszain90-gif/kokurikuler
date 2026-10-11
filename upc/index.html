@@ -3,33 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOKURIKULER SMKN 2 Klaten</title>
-<script>
-        // 1. Menonaktifkan Klik Kanan
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // 2. Menonaktifkan Tombol F12 dan Kombinasi Keyboard Tertentu
-        document.addEventListener('keydown', function(e) {
-            // Mencegah tombol F12
-            if (e.key === 'F12') {
-                e.preventDefault();
-            }
-
-            // Mencegah Ctrl+Shift+I (Inspect Element)
-            // Mencegah Ctrl+Shift+J (Console)
-            // Mencegah Ctrl+Shift+C (Inspect Element Mode)
-            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
-                e.preventDefault();
-            }
-
-            // Mencegah Ctrl+U (View Source)
-            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
-                e.preventDefault();
-            }
-        });
-    </script>
+    <title>UPACARA SMKN 2 Klaten</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -84,7 +58,7 @@
 <body>
 
 <div class="container">
-    <h2>Akses PRESENSI UPACARA SMKN 2 KLATEN</h2>
+    <h2>Akses UPACARA SMKN 2 KLATEN</h2>
     
     <!-- Tempat di mana iframe/bingkai form akan muncul secara dinamis -->
     <div id="container-link">
@@ -102,11 +76,58 @@
     const daftarJadwal = [
         {
             tanggal: '2026-10-11', 
-            jamMulai: '14:30', 
-            jamSelesai: '23:05', 
-            url: 'https://docs.google.com/forms/d/e/1FAIpQLSfyiQRlaK8WrcCzHWyWUe-5LN-4hrtr_OGt-mry-YJVdCUeaQ/viewform?' // Contoh link embed Google Form
+            jamMulai: '07:18', 
+            jamSelesai: '23:10', 
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSfyiQRlaK8WrcCzHWyWUe-5LN-4hrtr_OGt-mry-YJVdCUeaQ/viewform?usp=dialog' // Contoh link embed Google Form
         },
-      
+        {
+            tanggal: '2026-06-02', 
+            jamMulai: '09:25', 
+            jamSelesai: '11:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScG_9TERnxw2P_t2s7W0l5LqLg6gmnhSMtHpO-c2Ux1YHJhEg/viewform'
+        },
+	{
+            tanggal: '2026-06-03', 
+            jamMulai: '07:25', 
+            jamSelesai: '09:10', 
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSf65av65c67dDwwpCbViTd38S_W7giktC5z5ItzZaPlt9bysg/viewform' 
+        },
+      	 {
+            tanggal: '2026-06-03', 
+            jamMulai: '12:25', 
+            jamSelesai: '14:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSefk-BzryGjS2W7LNoz7gPeThXPKc0kFBZT63yI0DeoeNX-Gg/viewform'
+        },
+	{
+            tanggal: '2026-06-04', 
+            jamMulai: '07:25', 
+            jamSelesai: '09:10', 
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScR8j8EBwWFfOAcDzyYzFfWsVswcrbnfy-RD0yd03mbscJm_w/viewform' 
+        },
+        {
+            tanggal: '2026-06-04', 
+            jamMulai: '09:25', 
+            jamSelesai: '11:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScZmsXcXAmTckpUOdTBtcBBXwsoZha0EAOeLy4BTA9fBvsYng/viewform'
+        },
+	 {
+            tanggal: '2026-06-04', 
+            jamMulai: '12:25', 
+            jamSelesai: '14:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScDsEAjXBlj8jjlxHYX1MJL3DoMX3kQS8Md0smnYomEqrAPLQ/viewform'
+        },
+	 {
+            tanggal: '2026-06-05', 
+            jamMulai: '07:25', 
+            jamSelesai: '09:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLScoEvF5Y8sXo9fYZqY1paunlQxpZqjVVZCVeJKO34_1UP-P9A/viewform'
+        },
+	 {
+            tanggal: '2026-06-05', 
+            jamMulai: '09:25', 
+            jamSelesai: '11:10', // Sesi aktif saat ini
+            url: 'https://docs.google.com/forms/d/e/1FAIpQLSdo5t92xUW07q5poXmXaDFLyoHS72AcI2__d1m8oAv3sPomAA/viewform'
+        },
     ];
 
     function cekDanTampilkanForm() {
@@ -142,7 +163,7 @@
                     </iframe>`;
             }
         } else {
-            containerLink.innerHTML = `<p class="no-form">Maaf, saat ini tidak melakukan PRESENSI, PRESENSI dapat dilakukan pada hari dilaksanakan Upacara dari jam 06:30 sampai jam 07:05, Terimakasih</p>`;
+            containerLink.innerHTML = `<p class="no-form">Maaf, saat ini tidak ada EXAM/Ujian yang dibuka sesuai jadwal.</p>`;
         }
     }
 
@@ -150,6 +171,6 @@
     cekDanTampilkanForm();
     setInterval(cekDanTampilkanForm, 1000);
 </script>
-</body>
 
+</body>
 </html>
